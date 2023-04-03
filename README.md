@@ -45,7 +45,7 @@ segun una fila, une todas las coincidencias de la tabla izquierda con la derecha
  FROM   empleado
         LEFT JOIN departamento
            ON empleado.IDDepartamento = departamento.IDDepartamento;
-           ```
+```
 
 ### 1 LEFT JOIN excluyendo la intersección(A-B)
 
