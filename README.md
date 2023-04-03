@@ -28,9 +28,9 @@ lenguaje estructura de consulta.
  
 ## join
 
-Combinar o unir dos tablas distintas, une filas segun la columna relacionada que se defina.
+Combinar o unir dos tablas distintas, une filas segun la columna relacionada que se defina. Basicos: inner, full, left, right.
 
-- inner: 
-- full: 
-- left: 
-- right:
+Oracle
+
+- inner join
+- left join
