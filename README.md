@@ -30,7 +30,110 @@ lenguaje estructura de consulta.
 
 Combinar o unir dos tablas distintas, une filas segun la columna relacionada que se defina. Basicos: inner, full, left, right.
 
-Oracle
+![SQL JOINS](./media/SQL-JOINS.png)
 
-- inner join
-- left join
+## JOIN SQL -Oracle
+
+- Tabla A (izquierda) y Tabla B (derecha).
+
+### 1 left join (A)
+
+segun una fila, une todas las coincidencias de la tabla izquierda con la derecha y la coincidencia entre ambas tablas. Se mostrarian todos los empleados con su id departamente y en null los que tienen un departamento que no existe.
+
+```sql
+ SELECT *
+ FROM   empleado
+        LEFT JOIN departamento
+           ON empleado.IDDepartamento = departamento.IDDepartamento;
+           ```
+
+### 1 LEFT JOIN excluyendo la intersección(A-B)
+
+segun una fila, une solamente las coincidencias de la tabla izquierda con la derecha , excluyendo los datos de la derecha. Todos los empleados con id departamento que no exsite (null).
+
+```sql
+ SELECT *
+ FROM   empleado
+        LEFT OUTER JOIN departamento
+           ON empleado.IDDepartamento = departamento.IDDepartamento
+ WHERE  departamento.IDDepartamento IS NULL;
+```
+
+### 2 RIGHT OUTER JOIN (B)
+
+segun una fila, une todas las coincidencias de la tabla derecha con la izquierda y la coincidencia entre ambas tablas. Muestra los empleados que tienen empleados y los que no tienen empleados.
+
+```sql
+ SELECT *
+ FROM   empleado
+        RIGHT OUTER JOIN departamento
+           ON empleado.IDDepartamento = departamento.IDDepartamento;
+```
+
+### 2 RIGHT JOIN excluyendo la intersección (B-A)
+
+segun una fila, une solamente las coincidencias de la tabla derecha con la izquierda , excluyendo los datos de la izquierda. Muestra los departamentos que no tienen empleados
+
+```sql
+ SELECT *
+ FROM   empleado
+        RIGHT OUTER JOIN departamento
+           ON empleado.IDDepartamento = departamento.IDDepartamento
+ WHERE  empleado.IDDepartamento IS NULL
+```
+
+### 3 full Outer Join (A u B)
+
+Une completamente las dos tablas, en caso de que algun valor no coincida se mostrará null. Es igual a unir dos consultar de right con left. Muestra a los empleados en un departamento, a los empleados que no están en ningún departamento, y los departamentos que no tienen empleados.
+
+```sql
+SELECT *  
+ FROM   empleado
+        FULL OUTER JOIN departamento 
+           ON empleado.IDDepartamento = departamento.IDDepartamento;
+```
+
+### 3 FULL JOIN (A u B) - (A n B)
+
+Muestra los resultados de la union de las dos tablas donde no hay correspondencia. Muestra los resultados de empleados que no estan asignados a alguna area y departamentos que no tengan empleados (where ... is null).
+
+```sql
+ SELECT *  
+ FROM   empleado
+        FULL OUTER JOIN departamento 
+           ON empleado.IDDepartamento = departamento.IDDepartamento
+ WHERE  (empleado.IDDepartamento IS NULL)  OR  (departamento.IDDepartamento is NULL);
+
+```
+
+### 3 INNER JOIN (A n B)
+
+Intersección de ambas tablas, solo las coincidencias de ambas tablas. Muestra SOLO los empleados que están en un departamento
+
+```sql
+ SELECT *
+ FROM   empleado
+        INNER JOIN departamento
+           ON empleado.IDDepartamento = departamento.IDDepartamento;
+```
+
+```sql
+ SELECT *
+ FROM   empleado, departamento
+ WHERE  empleado.IDDepartamento = departamento.IDDepartamento;
+```
+
+### 4 CROSS (AxB)
+
+Productor cartesiano de ambas tablas. Se tendrá todos los registros de la izquierda combinados con cada uno de los de la tabla derecha.
+
+```sql
+SELECT *
+FROM empleado CROSS JOIN departamento;
+```
+
+```sql
+ SELECT *
+ FROM empleado, departamento;
+```
+
