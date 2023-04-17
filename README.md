@@ -137,3 +137,8 @@ FROM empleado CROSS JOIN departamento;
  FROM empleado, departamento;
 ```
 
+# REFRENCIAS
+
+1. [QUIZ](https://devgym.oracle.com/pls/apex/dg/competition/sql)
+2. [WIKIPEDIA-SQL JOINS](https://es.wikipedia.org/wiki/Sentencia_JOIN_en_SQL)
+3. [MATERIAL entrevistas](https://es.bitdegree.org/tutoriales/preguntas-de-entrevista-sql/)
